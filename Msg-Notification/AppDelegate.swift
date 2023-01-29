@@ -42,8 +42,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     // 알림 요청 객체
                     let request = UNNotificationRequest(identifier: "wakeup", content: nContent, trigger: trigger)
+                
+                    // 노티피케이션 센터에 추가
+                    UNUserNotificationCenter.current().add(request)
+                } else {
+                    print("사용자가 동의 하지 않음")
                 }
             }
+        } else {
+            
         }
     }
 
