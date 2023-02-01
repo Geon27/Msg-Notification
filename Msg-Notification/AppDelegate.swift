@@ -79,5 +79,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // 알림 배너 띄워주기
         completionHandler([.alert, .badge, .sound])
     }
+    
+    // 사용자가 알림 메시지를 클릭했을 경우
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping ()->Void) {
+        if response.notification.request.identifier == "wakeup" {
+            let userInfo = response.notification.request.content.userInfo
+            print(userInfo["name"]!)
+        }
+        completionHandler()
+    }
 }
 
