@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             notiCenter.requestAuthorization(options: [.alert, .badge, .sound]) {(didAllow, e) in }
             notiCenter.delegate = self
         } else {
+            // 경고창, 배지, 사운드를 사용하는 알림 환경 정보를 생성, 이를 어플리케이션에 저장
+            let setting = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(setting)
             
         }
         // Override point for customization after application launch.
