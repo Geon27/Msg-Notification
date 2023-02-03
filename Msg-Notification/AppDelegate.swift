@@ -91,6 +91,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             print(userInfo["name"]!)
         }
         completionHandler()
+        
+        func application(_ application: UIApplication, didReceive notification:
+                         UILocalNotification) {
+            print((notification.userInfo?["name"])!)
+            if application.applicationState == UIApplication.State.active {
+                // 앱이 실행될때의 로직 구성
+            }else if application.applicationState == .inactive {
+                // 앱이 비활성 상태일때의 로직 구성
+            }
+        }
     }
 }
 
