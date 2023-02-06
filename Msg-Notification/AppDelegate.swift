@@ -54,6 +54,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 }
             }
         } else {
+            // 알림 설정 확인
+            let setting = application.currentUserNotificationSettings
+            
+            // 알림 설정이 되어 있지 않으면 로컬 알림을 보내도 받을 수 없으므로 종료함
+            guard setting?.types != .none else {
+                print("Can't Schedule")
+                return
+            }
+            
+            // 로컬 알람 인스턴스 생성
+            let noti = UILocalNotification()
+            noti.fireDate = Date(timeIntervalSinceNow: 10) // 10초후 발송
+            noti.timeZone = TimeZone.autoupdatingCurrent // 현재 위치에 따라 타임존 설정
+            noti.alertBody = "얼른 다시 접속하세요!" // 표시될 메시지
             
         }
     }
