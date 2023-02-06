@@ -10,6 +10,11 @@ import UserNotifications
 
 class ViewController: UIViewController {
 
+    @IBOutlet var msg: UITextField!
+    @IBOutlet var datepicker: UIDatePicker!
+    
+    @IBAction func save(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
