@@ -68,7 +68,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             noti.fireDate = Date(timeIntervalSinceNow: 10) // 10초후 발송
             noti.timeZone = TimeZone.autoupdatingCurrent // 현재 위치에 따라 타임존 설정
             noti.alertBody = "얼른 다시 접속하세요!" // 표시될 메시지
+            noti.alertAction = "학습하기" // 잠금 상태일 때 표시될 액션
+            noti.applicationIconBadgeNumber = 1 // 앱 아이콘 모서리에 표시될 배지
+            noti.soundName = UILocalNotificationDefaultSoundName // 로컬 알림 도착시 사운드
+            noti.userInfo = ["name":"홍길동"] // 알림 실행시 함께 전달하고 싶은 값. 화면에는 표시 x
             
+            // 생성된 알람 객체를 스케줄러에 등록
+            application.scheduleLocalNotification(noti)
         }
     }
 
