@@ -14,6 +14,11 @@ class ViewController: UIViewController {
     @IBOutlet var datepicker: UIDatePicker!
     
     @IBAction func save(_ sender: Any) {
+        if #available(iOS 10, *) {
+            // UserNotification 프레임워크를 사용한 로컬 알림
+        } else {
+            // LocalNotification 객체를 사용한 로컬 알림
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
