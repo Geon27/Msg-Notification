@@ -29,6 +29,10 @@ class ViewController: UIViewController {
                         let time = self.datepicker.date.timeIntervalSinceNow
                         // 발송 조건 정의
                         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
+                        // 발송 요청 객체 정의
+                        let request = UNNotificationRequest(identifier: "alarm", content: nContent, trigger: trigger)
+                        // 노티피케이션 센터에 추가
+                        UNUserNotificationCenter.current().add(request)
                     }
                     // 알림설정이 들어갈 곳
                 } else {
