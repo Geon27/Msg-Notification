@@ -18,6 +18,18 @@ class ViewController: UIViewController {
             // 알림 동의 여부를 확인
             UNUserNotificationCenter.current().getNotificationSettings{ settings in
                 if settings.authorizationStatus == UNAuthorizationStatus.authorized {
+                    DispatchQueue.main.async {
+                        // 알림 콘텐츠 정의
+                        let nContent = UNMutableNotificationContent()
+                        nContent.body = (self.msg.text)!
+                        nContent.title = "미리 알림"
+                        nContent.sound = UNNotificationSound.default
+                        
+                        // 발송 시각을 '지금으로 부터 n초 형식'으로 변환
+                        let time = self.datepicker.date.timeIntervalSinceNow
+                        // 발송 조건 정의
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: false)
+                    }
                     // 알림설정이 들어갈 곳
                 } else {
                     let alert = UIAlertController(title:"알림 등록", message:"알림이 허용되어 있지 않습니다", preferredStyle: .alert)
