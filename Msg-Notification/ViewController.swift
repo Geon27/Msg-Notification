@@ -32,7 +32,12 @@ class ViewController: UIViewController {
                         // 발송 요청 객체 정의
                         let request = UNNotificationRequest(identifier: "alarm", content: nContent, trigger: trigger)
                         // 노티피케이션 센터에 추가
-                        UNUserNotificationCenter.current().add(request)
+                        UNUserNotificationCenter.current().add(request) { (_) in
+                            DispatchQueue.main.async {
+                            // 발송완료 안내 메시지 창
+                                
+                            }
+                        }
                     }
                     // 알림설정이 들어갈 곳
                 } else {
@@ -53,7 +58,4 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
-
