@@ -35,7 +35,14 @@ class ViewController: UIViewController {
                         UNUserNotificationCenter.current().add(request) { (_) in
                             DispatchQueue.main.async {
                             // 발송완료 안내 메시지 창
+                                let date = self.datepicker.date.addingTimeInterval(9*60*60)
+                                let message = "알림이 등록되었습니다. 등록된 알림은 \(date)에 발송됩니다"
                                 
+                                let alert = UIAlertController(title: "알림등록", message:message, preferredStyle: .alert)
+                                let ok = UIAlertAction(title: "확인", style: .default)
+                                alert.addAction(ok)
+                                
+                                self.present(alert, animated: false)
                             }
                         }
                     }
